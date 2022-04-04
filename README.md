@@ -1,8 +1,22 @@
 # laravel-template
-laravel開発用テンプレ
+dockerでのlaravel開発用テンプレ。
+# dockerコンテナ構成
+
+サービス名 | 用途 | 構成
+-----|-----|-----
+nginx | Webサーバ　| nginx v1.21.6 + FPM
+php | アプリケーション | PHP v8.0.17 Laravel v9.6.0
+mysql | DBサーバ　| MySQL v8.0
+
 
 # 利用方法
 このテンプレを利用する時の初期設定を記載します。
+
+## プロジェクト名変更
+変更箇所
+* laravel-template(ルートフォルダ) 例： jasmine
+* my-laravel-app(ルート直下のapp) 例： jasmine-app
+* nginx default.conf rootのパス(上記app名変更反映) 
 
 ## 環境変数設定
 
@@ -81,6 +95,7 @@ APP_KEY=
 root@95d51ce5aef5:/var/www/html/my-laravel-app# php artisan key:generate
 Application key set successfully.
 ```
+変更後確認
 ```
 root@95d51ce5aef5:/var/www/html/my-laravel-app# cat .env | grep APP_KEY
 APP_KEY=base64:ucWxxxxx[キーが設定されるようになります]
